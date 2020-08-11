@@ -1,5 +1,8 @@
-site_name: testing-repository 
-name: ci
+site_name: m2 tutorial site
+theme:
+  name: material
+
+name: m2 tutorial
 on:
   push:
     branches:
