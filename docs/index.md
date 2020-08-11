@@ -1,5 +1,6 @@
-# Welcome to MkDocs
+# M2 tutorials
 
+Below are just mkdocs
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
 ## Commands
