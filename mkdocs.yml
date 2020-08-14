@@ -1,20 +1,35 @@
-site_name: m2 tutorial site
+site_name: M2 Tutorial
+repo_url: https://github.com/tonychz/testing-repository
+#nav:
+#    - Home: index.md
+#    - About: about.md
+extra_css:
+  - stylesheets/color.css
 theme:
   name: material
-
-name: m2 tutorial
+  favicon: assets/m2.png
+  logo: assets/m2.png
+  #custom_dir: docs/resources/
+  palette:
+    scheme: m2style
+    accent: 'amber'
+    #scheme: slate
+    #primary: 'owlblue'
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.details
+name: M2 Tutorial
 on:
   push:
     branches:
       - master
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
-      - run: pip install mkdocs-material
-      - run: mkdocs gh-deploy --force
-
+#jobs:
+#  deploy:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: actions/setup-python@v2
+#        with:
+#          python-version: 3.x
+#      - run: pip install mkdocs-material
+#      - run: mkdocs gh-deploy --force
