@@ -1,0 +1,911 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../../assets/m2.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.6">
+    
+    
+      
+        <title>Arduino Tutorials (Learning Servo and Sensors) - M2 Tutorial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.63b94e9e.min.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.7f672a1f.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/color.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="m2style" data-md-color-primary="" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#objectives" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../../.." title="M2 Tutorial" class="md-header-nav__button md-logo" aria-label="M2 Tutorial">
+      
+  <img src="../../../assets/m2.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            M2 Tutorial
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Arduino Tutorials (Learning Servo and Sensors)
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/tonychz/testing-repository/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="M2 Tutorial" class="md-nav__button md-logo" aria-label="M2 Tutorial">
+      
+  <img src="../../../assets/m2.png" alt="logo">
+
+    </a>
+    M2 Tutorial
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/tonychz/testing-repository/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="M2 Tutorials Homepage" class="md-nav__link">
+      M2 Tutorials Homepage
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../Mkdocs%20Usage/" title="Mkdocs Usage" class="md-nav__link">
+      Mkdocs Usage
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Electronics team
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Electronics team" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Electronics team
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" checked>
+    
+    <label class="md-nav__link" for="nav-3-1">
+      Arduino Tutorials
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Arduino Tutorials" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Arduino Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Communication%29/" title="Arduino Tutorials (Communication)" class="md-nav__link">
+      Arduino Tutorials (Communication)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Getting-Started-with-Arduino-IDE%29/" title="Arduino Tutorials (Getting Started with Arduino IDE)" class="md-nav__link">
+      Arduino Tutorials (Getting Started with Arduino IDE)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Index%29/" title="Arduino Tutorials (Index)" class="md-nav__link">
+      Arduino Tutorials (Index)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Arduino Tutorials (Learning Servo and Sensors)
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Arduino Tutorials (Learning Servo and Sensors)" class="md-nav__link md-nav__link--active">
+      Arduino Tutorials (Learning Servo and Sensors)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servo-motor" class="md-nav__link">
+    Servo motor
+  </a>
+  
+    <nav class="md-nav" aria-label="Servo motor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-it-yourself-01" class="md-nav__link">
+    Do it yourself 01
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analog-signal" class="md-nav__link">
+    Analog Signal
+  </a>
+  
+    <nav class="md-nav" aria-label="Analog Signal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-it-yourself-03" class="md-nav__link">
+    Do it yourself 03
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-communication-protocol" class="md-nav__link">
+    I²C communication protocol
+  </a>
+  
+    <nav class="md-nav" aria-label="I²C communication protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#further-readings" class="md-nav__link">
+    Further Readings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-it-yourself-03_1" class="md-nav__link">
+    Do it yourself 03
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#library" class="md-nav__link">
+    Library
+  </a>
+  
+    <nav class="md-nav" aria-label="Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-it-yourself-04" class="md-nav__link">
+    Do it yourself 04
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assignment-03" class="md-nav__link">
+    Assignment 03
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-readings_1" class="md-nav__link">
+    Further Readings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Learning-basic-control%29/" title="Arduino Tutorials (Learning basic control)" class="md-nav__link">
+      Arduino Tutorials (Learning basic control)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Learning-basic-programming-with-Arduino%29/" title="Arduino Tutorials (Learning basic programming with Arduino)" class="md-nav__link">
+      Arduino Tutorials (Learning basic programming with Arduino)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Timer%2C-PWM-and-Interrupts%29/" title="Arduino Tutorials (Timer, PWM and Interrupts)" class="md-nav__link">
+      Arduino Tutorials (Timer, PWM and Interrupts)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servo-motor" class="md-nav__link">
+    Servo motor
+  </a>
+  
+    <nav class="md-nav" aria-label="Servo motor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-it-yourself-01" class="md-nav__link">
+    Do it yourself 01
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analog-signal" class="md-nav__link">
+    Analog Signal
+  </a>
+  
+    <nav class="md-nav" aria-label="Analog Signal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-it-yourself-03" class="md-nav__link">
+    Do it yourself 03
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-communication-protocol" class="md-nav__link">
+    I²C communication protocol
+  </a>
+  
+    <nav class="md-nav" aria-label="I²C communication protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#further-readings" class="md-nav__link">
+    Further Readings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-it-yourself-03_1" class="md-nav__link">
+    Do it yourself 03
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#library" class="md-nav__link">
+    Library
+  </a>
+  
+    <nav class="md-nav" aria-label="Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-it-yourself-04" class="md-nav__link">
+    Do it yourself 04
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assignment-03" class="md-nav__link">
+    Assignment 03
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-readings_1" class="md-nav__link">
+    Further Readings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/tonychz/testing-repository/edit/master/docs/Electronics team/Arduino Tutorials/Arduino-Tutorials-(Learning-Servo-and-Sensors).md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                  <h1>Arduino Tutorials (Learning Servo and Sensors)</h1>
+                
+                <p><strong>Next Tutorial: <a href="Arduino-Tutorials-(Communication)">Communication</a></strong></p>
+<h2 id="objectives">Objectives</h2>
+<p>At the end of this self-learning lab, you should be able to:
+* control servo motors
+* read analog signal
+* understand analog signal reading and I2C communication protocol
+* take reading from different sensors</p>
+<h2 id="servo-motor">Servo motor</h2>
+<p><img alt="Servo" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Servo.jpg" /></p>
+<p>A servo motor is a rotary actuator or linear actuator that allows for precise control of angular or linear position, velocity and acceleration. Because servo motors use feedback to determine the position of the shaft, you can control that position very precisely. As a result, servo motors are used to control the position of objects, rotate objects, move legs, arms or hands of robots, move sensors etc. with high precision.</p>
+<p>Read more about servo motor from the following websites.
+* <a href="https://en.wikipedia.org/wiki/Servomotor">Servomotor - Wikipedia</a>
+* <a href="https://www.jameco.com/jameco/workshop/howitworks/how-servo-motors-work.html">How Servo Motors Work | Servo Motor Controllers</a>
+* <a href="http://www.instructables.com/id/Arduino-How-to-Control-Servo-Motor-With-Arduino/">Arduino : How to Control Servo Motor With Arduino - Instrutables</a></p>
+<p>As Blue Pill is much more powerful than genuine Arduino, any PWM pin can be used for servo signal.</p>
+<p>You should notice that you need to use a library when you want to turn the servo motor to a designated position. The description of the library is as follows.
+* <a href="https://www.arduino.cc/en/reference/servo">Servo - Arduino</a></p>
+<p>Yet, the angle of servo motor is just controlled by PWM, which we have learnt before. Thus, we can also write a code to make a servo motor turn without using a library. Here is an example.
+* <a href="http://forum.arduino.cc/index.php?topic=5983.0">Servo and PWM without library - Arduino Forum</a></p>
+<h3 id="do-it-yourself-01">Do it yourself 01</h3>
+<p><strong>Servo Motor Controlling</strong></p>
+<ul>
+<li>Write a code which turns exactly 45 degrees and stops there.</li>
+<li>Write a code which controls the servo motor to rotate back and forth. </li>
+</ul>
+<h2 id="analog-signal">Analog Signal</h2>
+<p><img alt="Analog vs Digital" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Signals.PNG" /></p>
+<p>Analog signal is sent and received in the form of a wave. Digital signal is the opposite of analog signal. For the graph above, the L.H.S. expresses what an analog signal looks like, while the one on the right imitates a digital signal. You can imagine there is a door, digital signal can only tell you whether the door is closed or opened, but analog signal can tell you how wide is the door opening. <br/></p>
+<p>Receiving and sending analog signals in Arduino is as easy as tackling digital signals. Read the following sites to learn more about analog signals.
+* <a href="https://learn.sparkfun.com/tutorials/analog-vs-digital">Analog vs Digital</a>
+* <a href="https://www.arduino.cc/en/Tutorial/AnalogInput">Analog input in Arduino</a>
+* <a href="https://create.arduino.cc/projecthub/adammansour/distance-measuring-sensor-assignment-faeeb4">IR distance sensor measurement</a>
+* <a href="https://www.alanzucconi.com/2015/10/14/how-to-build-a-distance-sensor-with-arduino/">Build a distance sensor from scratch</a></p>
+<p><img alt="IR sensor" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_IR_sensor.jpg" /></p>
+<p>This is an IR distance sensor, which radiates IR light and measures the amount of IR reflected. It output analog singal with can be read by Blue Pill through any pin that support <a href="https://en.wikipedia.org/wiki/Analog-to-digital_converter">ADC</a>. Let's connect the sensor to Blue Pill.</p>
+<ul>
+<li>VCC: 3.3V</li>
+<li>GND: you guese it</li>
+<li>A0: pin that support ADC</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="kt">int</span> <span class="n">SENSOR_PIN</span> <span class="o">=</span> <span class="n">PA0</span><span class="p">;</span>   <span class="c1">// or any other pin you like</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1500</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">SENSOR_PIN</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span> <span class="c1">// pinMode can also be set as INPUT_ANALOG, but then it won&#39;t be able to use digitalRead() on the same pin</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">analogRead</span><span class="p">(</span><span class="n">SENSOR_PIN</span><span class="p">));</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Unlike genuine Arduino, analogRead() here on STM32 has 12-bit resolution. You should find that the signal is lower when there is more reflected IR light.</p>
+<h3 id="do-it-yourself-03">Do it yourself 03</h3>
+<p><strong>Planet Analogue and Planet Di Gi Charat</strong></p>
+<p>The signal can also be treated as a digital signal. Use digitalRead() and analogRead() at the same time and determine the threshold voltage that differentiate a HIGH signal from a LOW signal.</p>
+<h2 id="i2c-communication-protocol">I²C communication protocol</h2>
+<p><img alt="I²C" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_I2C.jpg" /></p>
+<p>I²C is a communication protocol which allows master devices to send and receive data from slave devices. Although the speed of data transmission through I²C is not very fast (~100kbits/s), it occupies a very little number of connections to establish a connection between devices. Moreover, the number of connections needed does not increase with an increase in devices. This makes I²C a very popular protocol in MCU-sensor connections.</p>
+<p>Find out more about I²C from the following websites.
+* <a href="https://learn.sparkfun.com/tutorials/i2c">I2C introduction</a>
+* <a href="https://www.arduino.cc/en/reference/wire">Arduino wire library for using I2C</a>
+* <a href="http://www.instructables.com/id/I2C-between-Arduinos/">I2C communication between 2 Arduino board</a></p>
+<p><img alt="MPU6050 breakout board" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_MPU6050.jpg" /></p>
+<p>MPU6050 is an IC with a 3-axis gyroscope, a 3-axis accelerometer and temperature sensor. It uses I²C to communicate. Here is an example code to use MPU6050:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// MPU-6050 Short Example Sketch</span>
+<span class="c1">// By Arduino User JohnChi</span>
+<span class="c1">// August 17, 2014</span>
+<span class="c1">// Public Domain</span>
+<span class="cp">#include</span> <span class="cpf">&lt;Wire.h&gt;</span><span class="cp"></span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MPU_ADDR</span> <span class="o">=</span> <span class="mh">0x68</span><span class="p">;</span>                 <span class="c1">// I2C address of the MPU-6050</span>
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+    <span class="n">Wire</span><span class="p">.</span><span class="n">beginTransmission</span><span class="p">(</span><span class="n">MPU_ADDR</span><span class="p">);</span>
+    <span class="n">Wire</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="mh">0x6B</span><span class="p">);</span>                      <span class="c1">// PWR_MGMT_1 register</span>
+    <span class="n">Wire</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>                         <span class="c1">// set to zero (wakes up the MPU-6050)</span>
+    <span class="n">Wire</span><span class="p">.</span><span class="n">endTransmission</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int16_t</span> <span class="n">ac_x</span><span class="p">,</span> <span class="n">ac_y</span><span class="p">,</span> <span class="n">ac_z</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">gy_x</span><span class="p">,</span> <span class="n">gy_y</span><span class="p">,</span> <span class="n">gy_z</span><span class="p">;</span>
+
+    <span class="n">Wire</span><span class="p">.</span><span class="n">beginTransmission</span><span class="p">(</span><span class="n">MPU_ADDR</span><span class="p">);</span>
+    <span class="n">Wire</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="mh">0x3B</span><span class="p">);</span>                      <span class="c1">// starting with register 0x3B (ac_CEL_XOUT_H)</span>
+    <span class="n">Wire</span><span class="p">.</span><span class="n">endTransmission</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+    <span class="n">Wire</span><span class="p">.</span><span class="n">requestFrom</span><span class="p">(</span><span class="n">MPU_ADDR</span><span class="p">,</span> <span class="mi">14</span><span class="p">);</span>        <span class="c1">// request a total of 14 registers</span>
+    <span class="n">ac_x</span> <span class="o">=</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">();</span> <span class="c1">// 0x3B (ac_CEL_XOUT_H) &amp; 0x3C (ac_CEL_XOUT_L)</span>
+    <span class="n">ac_y</span> <span class="o">=</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">();</span> <span class="c1">// 0x3D (ac_CEL_YOUT_H) &amp; 0x3E (ac_CEL_YOUT_L)</span>
+    <span class="n">ac_z</span> <span class="o">=</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">();</span> <span class="c1">// 0x3F (ac_CEL_ZOUT_H) &amp; 0x40 (ac_CEL_ZOUT_L)</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">();</span> <span class="c1">// 0x41 (TEMP_OUT_H) &amp; 0x42 (TEMP_OUT_L)</span>
+    <span class="n">gy_x</span> <span class="o">=</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">();</span> <span class="c1">// 0x43 (gy_RO_XOUT_H) &amp; 0x44 (gy_RO_XOUT_L)</span>
+    <span class="n">gy_y</span> <span class="o">=</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">();</span> <span class="c1">// 0x45 (gy_RO_YOUT_H) &amp; 0x46 (gy_RO_YOUT_L)</span>
+    <span class="n">gy_z</span> <span class="o">=</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">();</span> <span class="c1">// 0x47 (gy_RO_ZOUT_H) &amp; 0x48 (gy_RO_ZOUT_L)</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Temp = &quot;</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">temp</span> <span class="o">/</span> <span class="mf">340.00</span> <span class="o">+</span> <span class="mf">36.53</span><span class="p">);</span>   <span class="c1">// equation for temperature in degrees C from datasheet</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">Acc X = &quot;</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">ac_x</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; Y = &quot;</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">ac_y</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; Z = &quot;</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">ac_z</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">Gyro X = &quot;</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">gy_x</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; Y = &quot;</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">gy_y</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; Z = &quot;</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">gy_z</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">333</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="further-readings">Further Readings</h3>
+<ul>
+<li><a href="https://www.electronicshub.org/getting-started-arduino-mpu6050/">Getting Started With Arduino and MPU6050</a></li>
+<li><a href="http://gogoprivateryan.blogspot.com/2014/07/mpu-6050-google.html">MPU6050 notes(Chinese)</a></li>
+</ul>
+<h3 id="do-it-yourself-03_1">Do it yourself 03</h3>
+<p><strong>MPU6050 Gyroscope</strong>
+* Try to detect whether the MPU6050 breakout board is tilted using the gyroscope and/or the accelerometer readings.</p>
+<h2 id="library">Library</h2>
+<p>What is library?  It is code that written and contributed by many different people. It provides many great additional capabilities to run new and different hardware devices. The code will be inserted in your code if you add a library to your code. Find out more by yourself.
+* <a href="https://www.arduino.cc/en/Reference/Libraries">Libraries - Arduino</a>
+* <a href="https://www.arduino.cc/en/Guide/Libraries">Installing Additional Arduino Libraries - Arduino</a></p>
+<p>It is possible to calculate odometry using either gyroscope or the accelerometer readings. However, accelerometer is noisy and hence is inaccurate in short term; while gyroscope drifts and hence is inaccurate over long term. Here comes <a href="http://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/">Kalman Filter</a> to save the world. It fuses different measurements over time to provide a better estimation of the value. It is a difficult topic in robotics, so understanding and using of Kalman filter is not required at this stage. Just for your reference.</p>
+<p>Understanding how the stuff works is a bit complicated for beginners. Thus, there are always geniuses which make a library by themselves. We can include the library so that values can be obtained by just calling the corresponding function. There is a Arduinolibrary for Kalman Filer:
+* <a href="https://github.com/TKJElectronics/KalmanFilter">TKJElectronics/KalmanFilter: This is a Kalman filter used to calculate the angle, rate and bias from from the input of an accelerometer/magnetometer and a gyroscope - GitHub</a></p>
+<h3 id="do-it-yourself-04">Do it yourself 04</h3>
+<p><strong>kalman Filter</strong></p>
+<p>There is an Kalman Filter example on MPU6050. After installing the library, click <code>File</code> → <code>Examples</code> → <code>Kalman Filter Library</code> → <code>MPU6050</code> and execute the code.</p>
+<p>As stop bit is not yet implemented in the Arduino STM32 Core, <code>Wire.requestFrom(IMUAddress, nbytes, (uint8_t)true)</code> may need to be changed into <code>Wire.requestFrom(IMUAddress, nbytes)</code>.</p>
+<h2 id="assignment-03">Assignment 03</h2>
+<p><strong>clickclickclick</strong></p>
+<p>There was a game called <a href="http://www.clickclickclick.com/">clickclickclick.com</a>, which players compete to make most mouse clicks in a week. People use <a href="https://www.youtube.com/watch?v=Z-1ZgWGbHiw">different</a> <a href="https://www.youtube.com/watch?v=O0ktC-V6K2E&amp;t=35s">methods</a> to fight for their victory. Unfortunately, it was closed in 2017, but we can still make a robot that click your mouse automatically to memorise this game.</p>
+<ul>
+<li>Use a servo to click a mouse automatically.</li>
+<li>As the user may want to temporarily use the mouse and move the mouse away, it should stop clicking when the mouse isn't nearby. Use a IR distance sensor to detect the presence of the mouse. You may want to use a mouse that's white in colour.</li>
+<li>It is dangerous if the robot still operate when it's falling! Stop servo action when it suspects that it is falling and restart only when there's a user reset.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="http://www.towerpro.com.tw/product/sg90-7/">SG90 Digital - Tower Pro</a></li>
+<li><a href="https://playground.arduino.cc/Main/MPU-6050">MPU-6050 - Arduino Playground</a></li>
+<li><a href="http://synacorp.my/v2/en/index.php?controller=attachment&amp;id_attachment=635">MPU6050 breakout board GY-521 Datasheet</a></li>
+<li><a href="https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf">MPU6050 Datasheet</a></li>
+</ul>
+<h2 id="further-readings_1">Further Readings</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=ImctYI8hgq4">Arduino for STM32 + MPU-6050 == Improve your programming skills! - Youtube</a></li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="Arduino-Tutorials-(Index)">Arduino Tutorials (Index)</a></li>
+<li><a href="Arduino-Tutorials-(Interacting-with-Computers)">Arduino Tutorials (Interacting with Computers)</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../Arduino-Tutorials-%28Index%29/" title="Arduino Tutorials (Index)" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Arduino Tutorials (Index)
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../Arduino-Tutorials-%28Learning-basic-control%29/" title="Arduino Tutorials (Learning basic control)" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Arduino Tutorials (Learning basic control)
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.d1f5a259.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d5fec882.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.fae956e7.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

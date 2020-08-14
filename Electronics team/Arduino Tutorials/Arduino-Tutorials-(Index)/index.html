@@ -1,0 +1,632 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../../assets/m2.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.6">
+    
+    
+      
+        <title>Arduino Tutorials (Index) - M2 Tutorial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.63b94e9e.min.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.7f672a1f.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/color.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="m2style" data-md-color-primary="" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basic-tutorials" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../../.." title="M2 Tutorial" class="md-header-nav__button md-logo" aria-label="M2 Tutorial">
+      
+  <img src="../../../assets/m2.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            M2 Tutorial
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Arduino Tutorials (Index)
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/tonychz/testing-repository/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="M2 Tutorial" class="md-nav__button md-logo" aria-label="M2 Tutorial">
+      
+  <img src="../../../assets/m2.png" alt="logo">
+
+    </a>
+    M2 Tutorial
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/tonychz/testing-repository/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="M2 Tutorials Homepage" class="md-nav__link">
+      M2 Tutorials Homepage
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../Mkdocs%20Usage/" title="Mkdocs Usage" class="md-nav__link">
+      Mkdocs Usage
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Electronics team
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Electronics team" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Electronics team
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" checked>
+    
+    <label class="md-nav__link" for="nav-3-1">
+      Arduino Tutorials
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Arduino Tutorials" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Arduino Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Communication%29/" title="Arduino Tutorials (Communication)" class="md-nav__link">
+      Arduino Tutorials (Communication)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Getting-Started-with-Arduino-IDE%29/" title="Arduino Tutorials (Getting Started with Arduino IDE)" class="md-nav__link">
+      Arduino Tutorials (Getting Started with Arduino IDE)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Arduino Tutorials (Index)
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Arduino Tutorials (Index)" class="md-nav__link md-nav__link--active">
+      Arduino Tutorials (Index)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-tutorials" class="md-nav__link">
+    Basic Tutorials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beyond-arduino" class="md-nav__link">
+    Beyond Arduino
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-links" class="md-nav__link">
+    External Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Learning-Servo-and-Sensors%29/" title="Arduino Tutorials (Learning Servo and Sensors)" class="md-nav__link">
+      Arduino Tutorials (Learning Servo and Sensors)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Learning-basic-control%29/" title="Arduino Tutorials (Learning basic control)" class="md-nav__link">
+      Arduino Tutorials (Learning basic control)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Learning-basic-programming-with-Arduino%29/" title="Arduino Tutorials (Learning basic programming with Arduino)" class="md-nav__link">
+      Arduino Tutorials (Learning basic programming with Arduino)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Timer%2C-PWM-and-Interrupts%29/" title="Arduino Tutorials (Timer, PWM and Interrupts)" class="md-nav__link">
+      Arduino Tutorials (Timer, PWM and Interrupts)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-tutorials" class="md-nav__link">
+    Basic Tutorials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beyond-arduino" class="md-nav__link">
+    Beyond Arduino
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-links" class="md-nav__link">
+    External Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/tonychz/testing-repository/edit/master/docs/Electronics team/Arduino Tutorials/Arduino-Tutorials-(Index).md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                  <h1>Arduino Tutorials (Index)</h1>
+                
+                <p>Through these tutorials, you may learn basic electronics through <strong>Arduino</strong>. </p>
+<p>There are "<strong>Try it Yourself</strong>" and "<strong>Assignment</strong>" in the tutorials that you should follow.</p>
+<h2 id="basic-tutorials">Basic Tutorials</h2>
+<ol>
+<li><a href="Arduino-Tutorials-(Getting-Started-with-Arduino-IDE)">Getting Started with Arduino IDE</a><ul>
+<li>Understand Arduino’s hardware</li>
+<li>Start using Arduino IDE</li>
+<li>Write basic Arduino codes</li>
+</ul>
+</li>
+<li><a href="Arduino-Tutorials-(Learning-basic-programming-with-Arduino)">Learning basic programming with Arduino</a><ul>
+<li>Know the meaning and usage of different data types</li>
+<li>Know how to use arithmetic operators, comparison operators and boolean operators</li>
+<li>Know how to use if…else, for, while statements</li>
+<li>You may skip this if you are familar with C++</li>
+</ul>
+</li>
+<li><a href="Arduino-Tutorials-(Timer,-PWM-and-Interrupts)">Timer, PWM and Interrupts</a><ul>
+<li>Understand Timer</li>
+<li>Use PWM</li>
+<li>Use External Interrupt</li>
+<li>Use Timer Interrupt</li>
+<li><strong>Assignment 01</strong></li>
+</ul>
+</li>
+<li><a href="Arduino-Tutorials-(Learning-basic-control)">Learning Basic Control</a><ul>
+<li>Control motor’s rotation speed using PWM</li>
+<li>Detect the speed of motor by speed sensor</li>
+<li>Perform a basic feedback control</li>
+<li><strong>Assignment 02</strong></li>
+</ul>
+</li>
+<li><a href="Arduino-Tutorials-(Learning-Servo-and-Sensors)">Learning Servo and Sensors</a><ul>
+<li>Control servo motors</li>
+<li>Read analog signal</li>
+<li>Understand analog signal reading and I2C communication protocol</li>
+<li>Take reading from different sensors</li>
+<li><strong>Assignment 03</strong></li>
+</ul>
+</li>
+<li><a href="Arduino-Tutorials-(Communication)">Communication</a><ul>
+<li>Set up serial communication in Arduino</li>
+<li>Set up communication between Arduino and the computer via pySerial</li>
+<li><strong>Assignment 04</strong></li>
+</ul>
+</li>
+</ol>
+<h2 id="beyond-arduino">Beyond Arduino</h2>
+<p>Arduino IDE is easy to use, but its functionalities are limited and low-level manipulations are impossible with Arduino IDE. If you want to dig deeper on MCU and STM32, you may consider the following:
+* <a href="http://www.openstm32.org/System%2BWorkbench%2Bfor%2BSTM32"><strong>SW4STM32</strong></a> is a toolchain to program STM32 with STM32Cube HAL and CMSIS, which can be integrate with Eclipse IDE with a Eclipse plug-in.
+    * <strong>STM32Cube HAL</strong> is a hardware abstraction layer (HAL) provided by ST Microelectronics, the manufacturer of STM32. It is more easy to use than CMSIS, but ST may discontinue it whenever they like. (Just like what they have done to STM32 Peripheral Library) <a href="https://controllerstech.com/stm32/">Controllerstech</a> offers basic tutorials on how to program STM32 with STM32Cube HAL.
+    * <strong>CMSIS</strong> is a HAL for the Cortex-M processor (including STM32). It is independent to MCU vendors and is considered as the hardcore way. You'll have to read <a href="https://www.st.com/content/ccc/resource/technical/document/reference_manual/59/b9/ba/7f/11/af/43/d5/CD00171190.pdf/files/CD00171190.pdf/jcr:content/translations/en.CD00171190.pdf">the reference manuals</a> by ST Microelectronics and manipulate the MCU by altering its registers.
+* STM32 can be used with <a href="https://en.wikipedia.org/wiki/Real-time_operating_system"><strong>Real-time OS (RTOS)</strong></a>, which offers functionalities such as event and multi-threading.
+    * <a href="http://www.chibios.org/dokuwiki/doku.php?id=chibios:articles:start"><strong>ChibiOS</strong></a>
+ is a RTOS that has been used by M2 members for a few years. There is <a href="https://github.com/m2robocon/m2_wiki/wiki/Setting-up-ChibiOS-workspace">an article</a> that introduces how to set up a workspace for programming ChibiOS.
+* Useful tool: <a href="https://www.st.com/en/development-tools/stm32cubemx.html"><strong>STM32CubeMX</strong></a> and <a href="https://www.st.com/en/development-tools/stm32cubeide.html"><strong>STM32CubeIDE</strong></a> but you might need a VPN to connect to their US server.
+* <strong>Quick Prototyping</strong>. 
+  * As Arduino boards are generally low-performance 8-bit devices, an upgrade path may be the now cheap and powerful ESP8266/ESP32 which have WiFi capabilities.
+  * For USB emulations, a quick and cheap way is to use <a href="https://www.arduino.cc/en/Guide/ArduinoLeonardoMicro">Arduino Micro</a> (ATmega32U4-based) that have support in generic Arduino IDE. <a href="https://github.com/NicoHood/HID">Advanced</a> use can also be found.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="Necessary-Information-for-Electrical-Trainee">Necessary Information for Electrical Trainee</a></li>
+</ul>
+<h2 id="external-links">External Links</h2>
+<ul>
+<li><a href="https://www.arduino.cc/en/Tutorial/HomePage">Tutorials - Arduino</a></li>
+<li><a href="https://www.arduino.cc/reference/en/">References - Arduino</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../Arduino-Tutorials-%28Getting-Started-with-Arduino-IDE%29/" title="Arduino Tutorials (Getting Started with Arduino IDE)" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Arduino Tutorials (Getting Started with Arduino IDE)
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../Arduino-Tutorials-%28Learning-Servo-and-Sensors%29/" title="Arduino Tutorials (Learning Servo and Sensors)" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Arduino Tutorials (Learning Servo and Sensors)
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.d1f5a259.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d5fec882.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.fae956e7.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

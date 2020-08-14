@@ -1,0 +1,879 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../../assets/m2.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.6">
+    
+    
+      
+        <title>Arduino Tutorials (Learning basic control) - M2 Tutorial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.63b94e9e.min.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.7f672a1f.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/color.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="m2style" data-md-color-primary="" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#objectives" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../../.." title="M2 Tutorial" class="md-header-nav__button md-logo" aria-label="M2 Tutorial">
+      
+  <img src="../../../assets/m2.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            M2 Tutorial
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Arduino Tutorials (Learning basic control)
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/tonychz/testing-repository/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="M2 Tutorial" class="md-nav__button md-logo" aria-label="M2 Tutorial">
+      
+  <img src="../../../assets/m2.png" alt="logo">
+
+    </a>
+    M2 Tutorial
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/tonychz/testing-repository/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="M2 Tutorials Homepage" class="md-nav__link">
+      M2 Tutorials Homepage
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../Mkdocs%20Usage/" title="Mkdocs Usage" class="md-nav__link">
+      Mkdocs Usage
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Electronics team
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Electronics team" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Electronics team
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" checked>
+    
+    <label class="md-nav__link" for="nav-3-1">
+      Arduino Tutorials
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Arduino Tutorials" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Arduino Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Communication%29/" title="Arduino Tutorials (Communication)" class="md-nav__link">
+      Arduino Tutorials (Communication)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Getting-Started-with-Arduino-IDE%29/" title="Arduino Tutorials (Getting Started with Arduino IDE)" class="md-nav__link">
+      Arduino Tutorials (Getting Started with Arduino IDE)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Index%29/" title="Arduino Tutorials (Index)" class="md-nav__link">
+      Arduino Tutorials (Index)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Learning-Servo-and-Sensors%29/" title="Arduino Tutorials (Learning Servo and Sensors)" class="md-nav__link">
+      Arduino Tutorials (Learning Servo and Sensors)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Arduino Tutorials (Learning basic control)
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Arduino Tutorials (Learning basic control)" class="md-nav__link md-nav__link--active">
+      Arduino Tutorials (Learning basic control)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5v-dc-motor" class="md-nav__link">
+    5V DC Motor
+  </a>
+  
+    <nav class="md-nav" aria-label="5V DC Motor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-01" class="md-nav__link">
+    Try it yourself 01
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#l298n-motor-driver-module" class="md-nav__link">
+    L298N Motor Driver Module
+  </a>
+  
+    <nav class="md-nav" aria-label="L298N Motor Driver Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-check-box" class="md-nav__link">
+    Section Check Box:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-02" class="md-nav__link">
+    Try it yourself 02
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speed-sensor" class="md-nav__link">
+    Speed Sensor
+  </a>
+  
+    <nav class="md-nav" aria-label="Speed Sensor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-it-yourself-03" class="md-nav__link">
+    Do it yourself 03
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback-control" class="md-nav__link">
+    Feedback control
+  </a>
+  
+    <nav class="md-nav" aria-label="Feedback control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-it-yourself-04" class="md-nav__link">
+    Do it yourself 04
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pid-controller" class="md-nav__link">
+    PID controller
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assignment-02" class="md-nav__link">
+    Assignment 02
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Learning-basic-programming-with-Arduino%29/" title="Arduino Tutorials (Learning basic programming with Arduino)" class="md-nav__link">
+      Arduino Tutorials (Learning basic programming with Arduino)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Timer%2C-PWM-and-Interrupts%29/" title="Arduino Tutorials (Timer, PWM and Interrupts)" class="md-nav__link">
+      Arduino Tutorials (Timer, PWM and Interrupts)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5v-dc-motor" class="md-nav__link">
+    5V DC Motor
+  </a>
+  
+    <nav class="md-nav" aria-label="5V DC Motor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-01" class="md-nav__link">
+    Try it yourself 01
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#l298n-motor-driver-module" class="md-nav__link">
+    L298N Motor Driver Module
+  </a>
+  
+    <nav class="md-nav" aria-label="L298N Motor Driver Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-check-box" class="md-nav__link">
+    Section Check Box:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-02" class="md-nav__link">
+    Try it yourself 02
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speed-sensor" class="md-nav__link">
+    Speed Sensor
+  </a>
+  
+    <nav class="md-nav" aria-label="Speed Sensor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-it-yourself-03" class="md-nav__link">
+    Do it yourself 03
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback-control" class="md-nav__link">
+    Feedback control
+  </a>
+  
+    <nav class="md-nav" aria-label="Feedback control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-it-yourself-04" class="md-nav__link">
+    Do it yourself 04
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pid-controller" class="md-nav__link">
+    PID controller
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assignment-02" class="md-nav__link">
+    Assignment 02
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/tonychz/testing-repository/edit/master/docs/Electronics team/Arduino Tutorials/Arduino-Tutorials-(Learning-basic-control).md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                  <h1>Arduino Tutorials (Learning basic control)</h1>
+                
+                <p><strong>Prerequisite: <a href="Learning-basic-soldering-skills">Learning basic soldering skills</a></strong></p>
+<p><strong>Next Tutorial: <a href="Arduino-Tutorials-(Learning-Servo-and-Sensors)">Arduino Tutorials (Learning Servo and Sensors)</a></strong></p>
+<h2 id="objectives">Objectives</h2>
+<p>At the end of this self-learning lab, you should be able to:
+* control motor’s rotation speed using PWM
+* detect the speed of motor by speed sensor
+* perform a basic feedback control</p>
+<h2 id="5v-dc-motor">5V DC Motor</h2>
+<p><img alt="DC motor" src="/m2robocon/m2_wiki/raw/master/images/(Arduino_Tutorials)_DC_Motor.jpg" /></p>
+<p>A DC motor (Direct Current motor) is the most common type of motor. DC motors normally have just two leads, one positive and one negative. If you connect these two leads directly to a battery, the motor will rotate. If you switch the leads, the motor will rotate in the opposite direction.</p>
+<p><img alt="Motor wiring" src="/m2robocon/m2_wiki/raw/master/images/(Arduino_Tutorials)_Motor_Wire.jpg" /></p>
+<p>For a simple demonstration, connect the motor to the 5V pin and GND pin on Blue Bill directly. You should have soldered the wire to the motor beforehand. The motor is directly drawing current from your PC, so please try it for <strong>a few seconds only</strong>.</p>
+<p>Code is not required for the motor to run. The 5V pin will output the voltage continuously without any code. You can reverse the two wires connected to the motor so the motor will turn in another direction.</p>
+<h3 id="try-it-yourself-01">Try it yourself 01</h3>
+<p><strong>Fail attempt</strong></p>
+<p>Plug in the wires of the motor to GPIOs on Blue Pill, and try to control it using <code>digitalWrite()</code>. <a href="Arduino-Tutorials-(Getting-Started-with-Arduino-IDE)#board-anatomy">Why doesn't it work</a>?</p>
+<h2 id="l298n-motor-driver-module">L298N Motor Driver Module</h2>
+<p><img alt="A L298N module" src="/m2robocon/m2_wiki/raw/master/images/(Arduino_Tutorials)_L298N_module.jpg" /></p>
+<p><a href="https://www.st.com/en/motor-drivers/l298.html">L298N</a> is a dual full bridge driver designed to accept digital signals and drive inductive loads like DC motors. Here is a popular L298N module that can drive up to 2 motors.</p>
+<p>Check the instructions to see how it works.
+* <a href="http://www.handsontec.com/dataspecs/L298N%20Motor%20Driver.pdf">L298N Dual H-Bridge Motor Driver User Guide</a>
+* <a href="https://www.instructables.com/id/Control-DC-and-stepper-motors-with-L298N-Dual-Moto/">Control DC and Stepper Motors With L298N Dual Motor Controller Modules and Arduino: 3 Steps - Instructables</a></p>
+<p>Note that if you are using an external power supply, there should be a common ground connecting the power supply, L298N drive and Blue Pill.</p>
+<h3 id="section-check-box">Section Check Box:</h3>
+<ul>
+<li>How to provide power to L298N driver Module</li>
+<li>How to connect the motors to L298N driver Module</li>
+</ul>
+<h3 id="try-it-yourself-02">Try it yourself 02</h3>
+<p><strong>Need for Speed</strong></p>
+<ul>
+<li>Instead of digital signal, applied the L298N driver with PWM signal. Try to control the speed of the motor.</li>
+<li>Check the supplied voltage to the DC motor using a multimeter. You may notice that the motor doesn't rotate under a certain voltage level. Find out the voltage needed to turn on the motor. <a href="https://ebldc.com/?p=34">Why doesn't it move</a>?</li>
+</ul>
+<h2 id="speed-sensor">Speed Sensor</h2>
+<p><img alt="Speed Sensor" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Speed_Sensor.jpg" /></p>
+<p>Speed sensors are used to detect the speed of a device moving or rotating. There are many kinds of speed sensors. In this lab, we will use LM393, which is a simple photo-resistor light sensor that has both analog and digital outputs. The digital output has a trim potentiometer that can be used to set a trigger light level.</p>
+<p><img alt="Encoder Disk" src="https://github.com/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Encoder_Disk.jpg" /></p>
+<p>You will also need to use the encoder disc above, placing inside the gap of the speed sensor. Thus, when the disk rotates, the speed sensor can detect the rotation.</p>
+<h3 id="do-it-yourself-03">Do it yourself 03</h3>
+<p><strong>Motor speed sensing</strong></p>
+<ul>
+<li>Connect the encoder disc and speed sensor to the motor, and connect the digital pin of speed sensor to Blue Pill. Use digitalRead() and rotate the motor manually to observe how it behaves.</li>
+<li>Drive the motor with the board and write a code to measure the Revolutions Per Minute (RPM) of the motor. You may use interrupt to count the number of or with the help of built-in function <a href="https://www.arduino.cc/en/Reference/PulseIn">pulseIn()</a>.</li>
+</ul>
+<h2 id="feedback-control">Feedback control</h2>
+<p><img alt="Feedback Control" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_feedback_ctrl.png" /></p>
+<p>In order to control the speed of the motor, you can:
+1. Apply a certain voltage to the motor.
+2. Measure the speed of the motor and calculate the error, i.e. the difference between the desired speed and the actual speed.
+3. Increase the supplied voltage if the speed is too low, vice versa. It may be more responsive if the adjustment is proportional to the error.
+4. Repeat 2 - 3.</p>
+<p>This is called a <a href="https://en.wikipedia.org/wiki/Control_theory#Open-loop_and_closed-loop_(feedback)_control">negative feedback control</a>. (The same as the one you learnt in secondary school biology) This method we have used is called <a href="https://en.wikipedia.org/wiki/Proportional_control">proportional control</a>.</p>
+<h3 id="do-it-yourself-04">Do it yourself 04</h3>
+<p><strong>I have complete control</strong></p>
+<ul>
+<li>Write a code that can control the motor to rotate at around 100 RPM.</li>
+<li>Apply some resistance over the motor. How does the supplied voltage level changed? Can it maintain at 100 RPM?</li>
+</ul>
+<h2 id="pid-controller">PID controller</h2>
+<p><img alt="PID Compensation" src="(Arduino_Tutorials)_PID_Compensation_Animated.gif" /></p>
+<p>Proportional control is a primitive control method and has many problems:
+* Slow response time
+* Unable to reach target
+* Overshoot and oscillate</p>
+<p>There is another control method called <a href="https://en.wikipedia.org/wiki/PID_controller">PID control</a>. It takes account of the proportional, integral, and derivative terms of the error. Our measurement here is slow and inaccurate, so PID control doesn't perform well here. However, it's better to learn more about this:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/PID_controller">PID controller - Wikipedia</a></li>
+<li><a href="http://brettbeauregard.com/blog/2011/04/improving-the-beginners-pid-introduction/">Improving the Beginner’s PID – Introduction - Project Blog</a></li>
+<li><a href="https://playground.arduino.cc/Code/PIDLibrary">PIDLibrary - Arduino Playground</a></li>
+</ul>
+<h2 id="assignment-02">Assignment 02</h2>
+<p><strong>You accidentally made a servo motor</strong></p>
+<p>Write a code that can control motor speed. It should:
+* Read desired speed from serial input (continuously) and rotate the motor at the desired speed.
+* Print the value of currently supplied voltage and RPM of the motor.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="Arduino-Tutorials-(Index)">Arduino Tutorials (Index)</a></li>
+<li><a href="Arduino-Tutorials-(Learning-Servo-and-Sensors)">Arduino Tutorials (Learning Servo and Sensors)</a></li>
+</ul>
+<!--
+Oh, you've found the "secret of the world"!
+Here is the suggested answers of Assignment 03:
+
+const int MOTOR_PIN = PA3;
+const int SPEED_PIN = PA4;
+const int DISK_RESOLUTION = 40;
+const int DESIRE_RPM = 100;
+const int CTRL_PERIOD = 200000; // in microseconds
+const int CTRL_P = 2;
+
+int g_count = 0;
+float g_rpm = 0;
+int g_motor_v = 200;
+
+void handler_speed(void);
+void handler_ctrl(void);
+
+void setup()
+{
+  delay(1000);
+  Serial.begin(9600);
+  pinMode(MOTOR_PIN, OUTPUT);
+  pinMode(SPEED_PIN, INPUT);
+
+  attachInterrupt(SPEED_PIN, handler_speed, CHANGE);
+
+  Timer1.setMode(TIMER_CH1, TIMER_OUTPUTCOMPARE);
+  Timer1.setPeriod(CTRL_PERIOD);
+  Timer1.setCompare(TIMER_CH1, 1);
+  Timer1.attachInterrupt(TIMER_CH1, handler_ctrl);
+}
+
+void loop() {
+  Serial.print(g_motor_v);
+  Serial.print(' ');
+  Serial.println(g_rpm);
+  delay(200);
+}
+
+void handler_speed(){
+  g_count++;
+}
+
+void handler_ctrl(){
+
+  int count_tmp = g_count;
+
+  g_count = 0;
+  g_rpm = count_tmp*60.0*1000000/DISK_RESOLUTION/CTRL_PERIOD;
+
+  int error = g_rpm - DESIRE_RPM;
+  Serial.println(error);
+  g_motor_v -= error * CTRL_P;
+
+  g_motor_v = constrain(g_motor_v, 0, 255);
+  analogWrite(MOTOR_PIN, g_motor_v);
+
+}
+-->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../Arduino-Tutorials-%28Learning-Servo-and-Sensors%29/" title="Arduino Tutorials (Learning Servo and Sensors)" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Arduino Tutorials (Learning Servo and Sensors)
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../Arduino-Tutorials-%28Learning-basic-programming-with-Arduino%29/" title="Arduino Tutorials (Learning basic programming with Arduino)" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Arduino Tutorials (Learning basic programming with Arduino)
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.d1f5a259.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d5fec882.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.fae956e7.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

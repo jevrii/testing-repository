@@ -1,0 +1,775 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../../assets/m2.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.6">
+    
+    
+      
+        <title>Arduino Tutorials (Communication) - M2 Tutorial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.63b94e9e.min.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.7f672a1f.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/color.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="m2style" data-md-color-primary="" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#objectives" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../../.." title="M2 Tutorial" class="md-header-nav__button md-logo" aria-label="M2 Tutorial">
+      
+  <img src="../../../assets/m2.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            M2 Tutorial
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Arduino Tutorials (Communication)
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/tonychz/testing-repository/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="M2 Tutorial" class="md-nav__button md-logo" aria-label="M2 Tutorial">
+      
+  <img src="../../../assets/m2.png" alt="logo">
+
+    </a>
+    M2 Tutorial
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/tonychz/testing-repository/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="M2 Tutorials Homepage" class="md-nav__link">
+      M2 Tutorials Homepage
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../Mkdocs%20Usage/" title="Mkdocs Usage" class="md-nav__link">
+      Mkdocs Usage
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Electronics team
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Electronics team" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Electronics team
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" checked>
+    
+    <label class="md-nav__link" for="nav-3-1">
+      Arduino Tutorials
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Arduino Tutorials" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Arduino Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Arduino Tutorials (Communication)
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Arduino Tutorials (Communication)" class="md-nav__link md-nav__link--active">
+      Arduino Tutorials (Communication)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serial-communication" class="md-nav__link">
+    Serial Communication
+  </a>
+  
+    <nav class="md-nav" aria-label="Serial Communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-01" class="md-nav__link">
+    Try it yourself 01
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyserial" class="md-nav__link">
+    pySerial
+  </a>
+  
+    <nav class="md-nav" aria-label="pySerial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-02" class="md-nav__link">
+    Try it yourself 02
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assignment-04" class="md-nav__link">
+    Assignment 04
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further reading
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Getting-Started-with-Arduino-IDE%29/" title="Arduino Tutorials (Getting Started with Arduino IDE)" class="md-nav__link">
+      Arduino Tutorials (Getting Started with Arduino IDE)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Index%29/" title="Arduino Tutorials (Index)" class="md-nav__link">
+      Arduino Tutorials (Index)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Learning-Servo-and-Sensors%29/" title="Arduino Tutorials (Learning Servo and Sensors)" class="md-nav__link">
+      Arduino Tutorials (Learning Servo and Sensors)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Learning-basic-control%29/" title="Arduino Tutorials (Learning basic control)" class="md-nav__link">
+      Arduino Tutorials (Learning basic control)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Learning-basic-programming-with-Arduino%29/" title="Arduino Tutorials (Learning basic programming with Arduino)" class="md-nav__link">
+      Arduino Tutorials (Learning basic programming with Arduino)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Timer%2C-PWM-and-Interrupts%29/" title="Arduino Tutorials (Timer, PWM and Interrupts)" class="md-nav__link">
+      Arduino Tutorials (Timer, PWM and Interrupts)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serial-communication" class="md-nav__link">
+    Serial Communication
+  </a>
+  
+    <nav class="md-nav" aria-label="Serial Communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-01" class="md-nav__link">
+    Try it yourself 01
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyserial" class="md-nav__link">
+    pySerial
+  </a>
+  
+    <nav class="md-nav" aria-label="pySerial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-02" class="md-nav__link">
+    Try it yourself 02
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assignment-04" class="md-nav__link">
+    Assignment 04
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further reading
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/tonychz/testing-repository/edit/master/docs/Electronics team/Arduino Tutorials/Arduino-Tutorials-(Communication).md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                  <h1>Arduino Tutorials (Communication)</h1>
+                
+                <h2 id="objectives">Objectives</h2>
+<p>At the end of this self-learning lab, you should be able to:
+* set up serial communication in Arduino
+* set up communication between Arduino and the computer via pySerial</p>
+<h2 id="serial-communication">Serial Communication</h2>
+<p>Serial communication, as its name tells, send data between devices bit by bit, in a serial way. The opposite of serial communication is parallel communication. Serial communication is commonly used nowadays. For example, USB device communicates with the computer using serial communication.</p>
+<p>Actually, you have been using Serial communication in the previous Arduino tutorials. In Arduino, the statement Serial.begin() sets up serial communication between the Arduino board and the computer over USB.</p>
+<p>In Blue Pill, besides Serial over USB, there are also 3 additional USART ports (<code>USART1</code> to <code>USART3</code>) that can be used for serial communication. They are <code>Serial1</code> to <code>Serial3</code> in Arduino IDE. (<a href="https://wiki.stm32duino.com/index.php?title=API#Serial_.26_USB_Serial">API - STM32duino wiki</a>)</p>
+<p><a href="/m2robocon/m2_wiki/raw/master/images/(Arduino_Tutorials)_Blue_pill_pinout.gif">As seen from there pin out of Blue Pill</a>:
+* <code>USART1</code> occupies <code>PA9</code> and <code>PA10</code> (TX1 and RX1)
+* <code>USART1</code> occupies <code>PA2</code> and <code>PA3</code> (TX2 and RX2)
+* <code>USART1</code> occupies <code>PB10</code> and <code>PB11</code> (TX3 and RX3)</p>
+<p>When program is uploaded using USB bootloader or ST-Link:
+* <code>Serial</code> prints to Serial USB.
+* <code>Serial1</code> prints to hardware <code>USART1</code>
+* <code>Serial2</code> prints to hardware <code>USART2</code>
+* <code>Serial3</code> prints to hardware <code>USART3</code></p>
+<p>When using USB-Serial adapter:
+* <code>Serial</code> prints to hardware <code>USART1</code>
+* <code>Serial1</code> prints to hardware <code>USART2</code>
+* <code>Serial2</code> prints to hardware <code>USART3</code></p>
+<p>Read more about serial communication from the following websites:
+* <a href="https://learn.sparkfun.com/tutorials/serial-communication">Serial communication</a>
+* <a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/">Serial Library in Arduino</a>
+* <a href="https://www.hackster.io/harshmangukiya/serial-communication-between-two-arduino-boards-d423e9">Serial communication between 2 Arduino board</a></p>
+<h3 id="try-it-yourself-01">Try it yourself 01</h3>
+<p><strong>Chinese whispers</strong></p>
+<p>Grab 2 Blue pills. Flash a program to a blue pill which print <code>Hello, World!</code> continuously over <code>Serial1</code>. They should be connected like below. Then click <code>File</code> → <code>Examples</code> → <code>04.Communications</code> → <code>SerialPassthrough</code> and flash it on one of the blue pills. This program put all data received from <code>Serial1</code> to <code>Serial</code> and vice versa. Connect <code>PA9</code> on one blue pill to <code>PA10</code> on the other and vice versa. (When using USB-Serial adapter, use <code>USART2</code> i.e. connect <code>PA2</code> to <code>PA3</code> and vice versa)</p>
+<p><img alt="Serial Communication" src="https://github.com/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Serial_Communication.png" /></p>
+<p>Now open Serial Monitor and you should see <code>Hello, World!</code> is printed continuously from the second blue pill.</p>
+<h2 id="pyserial">pySerial</h2>
+<p>Arduino IDE provides convenient way for showing serial communication between the Arduino boards and the Computer. Just a click on the Serial Monitor in Arduino IDE will do. However, it does not allow the computer to react according to the value received. No worry, you can write your own Serial Monitor using Python! pySerial is a Library which allows python programs to access the serial port. Thus, we can now bridge Arduino board and the computer by ourselves.</p>
+<p>If you haven't tried pySerial or want to further familiarize yourself with Python:
+* (Windows) Check <a href="https://learn.adafruit.com/arduino-lesson-17-email-sending-movement-detector/installing-python-and-pyserial">Python Code | Arduino Lesson 17. Email Sending Movement Detector | Adafruit Learning System</a>.</p>
+<ul>
+<li>(Linux) Python and pySerial can be easily installed through <code>python-pip</code>. Take Ubuntu as an example.
+    <div class="highlight"><pre><span></span><code>sudo apt install python python-pip
+pip install pyserial
+</code></pre></div></li>
+</ul>
+<p>Read more about Arduino and Python from the following websites.
+* <a href="https://playground.arduino.cc/Interfacing/Python">Arduino and Python</a>
+* <a href="https://engineersportal.com/blog/2018/2/25/python-datalogger-reading-the-serial-output-from-arduino-to-analyze-data-using-pyserial">Using PySerial to read data from Arduino</a></p>
+<h3 id="try-it-yourself-02">Try it yourself 02</h3>
+<p><strong>Take extra precautions while working at heights</strong></p>
+<p>Flash the following program to a Blue Pill:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1500</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">())</span> <span class="p">{</span>      <span class="c1">// If anything comes in Serial (USB),</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">());</span>   <span class="c1">// read it and send it out Serial1 (pins 0 &amp; 1)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>This should pass all data sent from PC back to itself. Open Serial Monitor to see if it works.</p>
+<ul>
+<li>
+<p>(Linux)</p>
+<p>Copy the following 2 programs as 2 separate files. change the line <code>ser = serial.Serial('/dev/ttyACM0', 9600)</code> according to the port name of the blue pill in your OS. It should be something like <code>/dev/ttyACM0</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Listener: read char from USB Serial</span>
+<span class="kn">import</span> <span class="nn">serial</span>
+<span class="n">ser</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="s1">&#39;/dev/ttyACM0&#39;</span><span class="p">,</span> <span class="mi">9600</span><span class="p">)</span> <span class="c1"># port name</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="n">ser</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Talker: send char through USB Serial</span>
+<span class="kn">import</span> <span class="nn">serial</span>
+<span class="n">ser</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="s1">&#39;/dev/ttyACM0&#39;</span><span class="p">,</span> <span class="mi">9600</span><span class="p">)</span> <span class="c1"># port name</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">raw_input</span><span class="p">(</span><span class="s2">&quot;Enter your input: &quot;</span><span class="p">)</span>
+    <span class="n">ser</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Run the 2 programs together. Python programs can be executed with:
+<div class="highlight"><pre><span></span><code>    python (filename)
+</code></pre></div></p>
+</li>
+<li>
+<p>(Windows)</p>
+<p>A serial port cannot be opened twice on Windows. Therefore, we have to use a multi-thread version. Copy the following program and save it as a  file. change the line <code>ser = serial.Serial('COM3', 9600)</code> according to the port name of the blue pill in your OS. It should be something like <code>COM4</code>. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">serial</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+
+<span class="k">class</span> <span class="nc">thread_read_serial</span> <span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span> <span class="c1"># read from the blue pill</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="n">ser</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span>
+
+<span class="k">class</span> <span class="nc">thread_write_serial</span> <span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span> <span class="c1"># write to the blue pill</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">raw_input</span><span class="p">(</span><span class="s2">&quot;Enter your input: &quot;</span><span class="p">)</span>
+            <span class="n">ser</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">thread1</span> <span class="o">=</span> <span class="n">thread_read_serial</span><span class="p">()</span>
+<span class="n">thread2</span> <span class="o">=</span> <span class="n">thread_write_serial</span><span class="p">()</span>
+
+<span class="n">ser</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="s1">&#39;COM3&#39;</span><span class="p">,</span> <span class="mi">9600</span><span class="p">)</span> <span class="c1"># port name</span>
+
+<span class="n">thread1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">thread2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Run the program. Python programs can be executed with:
+<div class="highlight"><pre><span></span><code>    python (filename)
+</code></pre></div></p>
+<p>IDLE can't handle <code>raw_input()</code> correctly. Use command prompt instead.</p>
+</li>
+</ul>
+<p>Words sent from the talker should be seen on the listener. Words have actually passed to the blue pill and back to PC through USB Serial.</p>
+<h2 id="assignment-04">Assignment 04</h2>
+<p><strong>You accidentally made a servo motor again</strong></p>
+<p>Remember the motor with speed feedback you have wrote in <a href="/m2robocon/m2_wiki/wiki/Arduino-Tutorials-(Learning-basic-control)#assignment-02">Assignment 02</a>? Modify the Arduino program and write Python programs so that you can command the speed of the motor and read the RPM of the motor on your PC.</p>
+<p>You may refer to:
+* <a href="https://docs.python.org/2/library/index.html">The Python Standard Library</a>
+* <a href="https://pythonhosted.org/pyserial/pyserial_api.html">pySerial API - pySerial 3.0 documentation</a>
+* <a href="https://pythonhosted.org/pyserial/shortintro.html">Short introduction - pySerial 3.0 documentation</a></p>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/USB_communications_device_class">USB CDC class - Wikipedia</a></li>
+<li><a href="https://github.com/m2robocon/m2_wiki/wiki/WsIaR%3F-Communication!">WsIaR? Communication!</a></li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="Arduino-Tutorials-(Index)">Arduino Tutorials (Index)</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../../Mkdocs%20Usage/" title="Mkdocs Usage" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Mkdocs Usage
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../Arduino-Tutorials-%28Getting-Started-with-Arduino-IDE%29/" title="Arduino Tutorials (Getting Started with Arduino IDE)" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Arduino Tutorials (Getting Started with Arduino IDE)
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.d1f5a259.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d5fec882.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.fae956e7.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

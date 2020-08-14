@@ -1,0 +1,1589 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../../assets/m2.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.6">
+    
+    
+      
+        <title>Arduino Tutorials (Getting Started with Arduino IDE) - M2 Tutorial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.63b94e9e.min.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.7f672a1f.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/color.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="m2style" data-md-color-primary="" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#objectives" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../../.." title="M2 Tutorial" class="md-header-nav__button md-logo" aria-label="M2 Tutorial">
+      
+  <img src="../../../assets/m2.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            M2 Tutorial
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Arduino Tutorials (Getting Started with Arduino IDE)
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/tonychz/testing-repository/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="M2 Tutorial" class="md-nav__button md-logo" aria-label="M2 Tutorial">
+      
+  <img src="../../../assets/m2.png" alt="logo">
+
+    </a>
+    M2 Tutorial
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/tonychz/testing-repository/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="M2 Tutorials Homepage" class="md-nav__link">
+      M2 Tutorials Homepage
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../Mkdocs%20Usage/" title="Mkdocs Usage" class="md-nav__link">
+      Mkdocs Usage
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Electronics team
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Electronics team" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Electronics team
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" checked>
+    
+    <label class="md-nav__link" for="nav-3-1">
+      Arduino Tutorials
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Arduino Tutorials" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Arduino Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Communication%29/" title="Arduino Tutorials (Communication)" class="md-nav__link">
+      Arduino Tutorials (Communication)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Arduino Tutorials (Getting Started with Arduino IDE)
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Arduino Tutorials (Getting Started with Arduino IDE)" class="md-nav__link md-nav__link--active">
+      Arduino Tutorials (Getting Started with Arduino IDE)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-arduino" class="md-nav__link">
+    What is Arduino?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-stm32" class="md-nav__link">
+    What's STM32?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-is-stm32-arduino" class="md-nav__link">
+    So, is STM32 Arduino?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#then-why-are-you-telling-me-about-stm32" class="md-nav__link">
+    Then, why are you telling me about STM32?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blue-pill" class="md-nav__link">
+    Blue Pill
+  </a>
+  
+    <nav class="md-nav" aria-label="Blue Pill">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardware-specification" class="md-nav__link">
+    Hardware Specification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#board-anatomy" class="md-nav__link">
+    Board Anatomy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arduino-ide" class="md-nav__link">
+    Arduino IDE
+  </a>
+  
+    <nav class="md-nav" aria-label="Arduino IDE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arduino-ide_1" class="md-nav__link">
+    Arduino IDE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stm32-arduino-core" class="md-nav__link">
+    STM32 Arduino Core
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    Interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-check-box" class="md-nav__link">
+    Section Check Box:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-arduino-code" class="md-nav__link">
+    Basic Arduino Code
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Arduino Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-program-blink" class="md-nav__link">
+    First program: Blink
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-check-box_1" class="md-nav__link">
+    Section Check Box:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-more-you-know" class="md-nav__link">
+    The more you know
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upload-the-code-to-board" class="md-nav__link">
+    Upload the Code to board
+  </a>
+  
+    <nav class="md-nav" aria-label="Upload the Code to board">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-check-box_2" class="md-nav__link">
+    Section Check Box:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-more-you-know_1" class="md-nav__link">
+    The more you know
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-and-debugging" class="md-nav__link">
+    Error and Debugging
+  </a>
+  
+    <nav class="md-nav" aria-label="Error and Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-01" class="md-nav__link">
+    Try it yourself 01
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pinmodepin-input-digitalreadpin" class="md-nav__link">
+    pinMode(pin, INPUT) &amp; DigitalRead(pin)
+  </a>
+  
+    <nav class="md-nav" aria-label="pinMode(pin, INPUT) &amp; DigitalRead(pin)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-check-box_3" class="md-nav__link">
+    Section Check Box:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-02" class="md-nav__link">
+    Try it yourself 02
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serial-write" class="md-nav__link">
+    Serial Write
+  </a>
+  
+    <nav class="md-nav" aria-label="Serial Write">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-check-box_4" class="md-nav__link">
+    Section Check Box:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-03" class="md-nav__link">
+    Try it yourself 03
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serial-read" class="md-nav__link">
+    Serial read
+  </a>
+  
+    <nav class="md-nav" aria-label="Serial read">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-check-box_5" class="md-nav__link">
+    Section Check Box:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-04" class="md-nav__link">
+    Try it yourself 04
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-faq" class="md-nav__link">
+    Appendix: FAQ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-how-to-flash-usb-bootloader" class="md-nav__link">
+    Appendix: how to flash USB bootloader
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further Reading
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Index%29/" title="Arduino Tutorials (Index)" class="md-nav__link">
+      Arduino Tutorials (Index)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Learning-Servo-and-Sensors%29/" title="Arduino Tutorials (Learning Servo and Sensors)" class="md-nav__link">
+      Arduino Tutorials (Learning Servo and Sensors)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Learning-basic-control%29/" title="Arduino Tutorials (Learning basic control)" class="md-nav__link">
+      Arduino Tutorials (Learning basic control)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Learning-basic-programming-with-Arduino%29/" title="Arduino Tutorials (Learning basic programming with Arduino)" class="md-nav__link">
+      Arduino Tutorials (Learning basic programming with Arduino)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Arduino-Tutorials-%28Timer%2C-PWM-and-Interrupts%29/" title="Arduino Tutorials (Timer, PWM and Interrupts)" class="md-nav__link">
+      Arduino Tutorials (Timer, PWM and Interrupts)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-arduino" class="md-nav__link">
+    What is Arduino?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-stm32" class="md-nav__link">
+    What's STM32?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-is-stm32-arduino" class="md-nav__link">
+    So, is STM32 Arduino?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#then-why-are-you-telling-me-about-stm32" class="md-nav__link">
+    Then, why are you telling me about STM32?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blue-pill" class="md-nav__link">
+    Blue Pill
+  </a>
+  
+    <nav class="md-nav" aria-label="Blue Pill">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardware-specification" class="md-nav__link">
+    Hardware Specification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#board-anatomy" class="md-nav__link">
+    Board Anatomy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arduino-ide" class="md-nav__link">
+    Arduino IDE
+  </a>
+  
+    <nav class="md-nav" aria-label="Arduino IDE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arduino-ide_1" class="md-nav__link">
+    Arduino IDE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stm32-arduino-core" class="md-nav__link">
+    STM32 Arduino Core
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    Interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-check-box" class="md-nav__link">
+    Section Check Box:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-arduino-code" class="md-nav__link">
+    Basic Arduino Code
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Arduino Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-program-blink" class="md-nav__link">
+    First program: Blink
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-check-box_1" class="md-nav__link">
+    Section Check Box:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-more-you-know" class="md-nav__link">
+    The more you know
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upload-the-code-to-board" class="md-nav__link">
+    Upload the Code to board
+  </a>
+  
+    <nav class="md-nav" aria-label="Upload the Code to board">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-check-box_2" class="md-nav__link">
+    Section Check Box:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-more-you-know_1" class="md-nav__link">
+    The more you know
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-and-debugging" class="md-nav__link">
+    Error and Debugging
+  </a>
+  
+    <nav class="md-nav" aria-label="Error and Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-01" class="md-nav__link">
+    Try it yourself 01
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pinmodepin-input-digitalreadpin" class="md-nav__link">
+    pinMode(pin, INPUT) &amp; DigitalRead(pin)
+  </a>
+  
+    <nav class="md-nav" aria-label="pinMode(pin, INPUT) &amp; DigitalRead(pin)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-check-box_3" class="md-nav__link">
+    Section Check Box:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-02" class="md-nav__link">
+    Try it yourself 02
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serial-write" class="md-nav__link">
+    Serial Write
+  </a>
+  
+    <nav class="md-nav" aria-label="Serial Write">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-check-box_4" class="md-nav__link">
+    Section Check Box:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-03" class="md-nav__link">
+    Try it yourself 03
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serial-read" class="md-nav__link">
+    Serial read
+  </a>
+  
+    <nav class="md-nav" aria-label="Serial read">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-check-box_5" class="md-nav__link">
+    Section Check Box:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-it-yourself-04" class="md-nav__link">
+    Try it yourself 04
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-faq" class="md-nav__link">
+    Appendix: FAQ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-how-to-flash-usb-bootloader" class="md-nav__link">
+    Appendix: how to flash USB bootloader
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further Reading
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/tonychz/testing-repository/edit/master/docs/Electronics team/Arduino Tutorials/Arduino-Tutorials-(Getting-Started-with-Arduino-IDE).md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                  <h1>Arduino Tutorials (Getting Started with Arduino IDE)</h1>
+                
+                <p><strong>Next Tutorial: <a href="Arduino-Tutorials-(Learning-basic-programming-with-Arduino)">Learning basic programming with Arduino</a></strong> </p>
+<h2 id="objectives">Objectives</h2>
+<p>At the end of this self-learning lab, you should be able to:
+* understand Arduino’s hardware
+* starting using Arduino IDE
+* write basic Arduino codes</p>
+<h2 id="what-is-arduino">What is Arduino?</h2>
+<p><img alt="Arduino Uno" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Arduino_Uno.jpg" /> <img alt="Arduino Nano" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Arduino_Nano.jpg" /></p>
+<p>Arduino is an open-source platform used for building electronics projects. It consists of Arduino boards and the Arduino software. Arduino board is a physical programmable circuit board, or simply called a <strong>microcontroller</strong> (<strong>MCU</strong> for microcontroller unit). There are many different types of Arduino boards with different characteristics, including Arduino UNO, Arduino NANO and Arduino MEGA.</p>
+<p>Arduino IDE makes it easy for beginners to write code and upload it to the board. It uses a dialect of features from C++.</p>
+<h2 id="whats-stm32">What's STM32?</h2>
+<p>STM32 is a family of 32-bit MCU by STMicroelectronics. There are many development boards based on STM32 chips on the market.</p>
+<h2 id="so-is-stm32-arduino">So, is STM32 Arduino?</h2>
+<p>No.</p>
+<h2 id="then-why-are-you-telling-me-about-stm32">Then, why are you telling me about STM32?</h2>
+<p>People have made a Arduino Core for STM32 development boards, thus we can use Arduino IDE to programme STM32 boards, which has a shallower learning curves than using µVision.</p>
+<h2 id="blue-pill">Blue Pill</h2>
+<p><img alt="pinout of Blue Pill" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Blue_pill_pinout.gif" /></p>
+<p><a href="https://wiki.stm32duino.com/index.php?title=Blue_Pill"><strong>Blue Pill</strong></a> is the nickname given to the most popular, ultra-cheap and compact STM32F103C8T6 development board made by Chinese manufacturers.</p>
+<h3 id="hardware-specification">Hardware Specification</h3>
+<table>
+<thead>
+<tr>
+<th>Hardware Spec</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCU</td>
+<td>STM32F103C8</td>
+</tr>
+<tr>
+<td>Flash</td>
+<td>64 KB</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>20 KB</td>
+</tr>
+<tr>
+<td>Clock Speed</td>
+<td>72 MHz</td>
+</tr>
+<tr>
+<td>Voltage regulator</td>
+<td><a href="https://www.richtek.com/assets/product_file/RT9193/DS9193-16.pdf">RT9193-33</a> (300 mA)</td>
+</tr>
+<tr>
+<td>Schematic</td>
+<td><a href="https://wiki.stm32duino.com/images/c/c1/Vcc-gnd.com-STM32F103C8-schematic.pdf">Vcc-gnd.com-STM32F103C8-schematic.pdf</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="board-anatomy">Board Anatomy</h3>
+<ul>
+<li>Pins</li>
+<li>PA0 - PA15 (marked as A0 - A15 on the board)</li>
+<li>PB0 - PB15 (marked as B0 - B15)</li>
+<li>
+<p>PC13 - PC15 (marked as C13 - A15)</p>
+<p>They are the main characters of the board, GPIO (General-purpose input/output), which have digital signal inputs and outputs depend on how the program has defined them, which will be explain later. They also have alternate functions, such as PWM, ADC, DAC, USART, I2C, SPI, CAN and many others (You may read <a href="https://www.st.com/content/ccc/resource/technical/document/reference_manual/59/b9/ba/7f/11/af/43/d5/CD00171190.pdf/files/CD00171190.pdf/jcr:content/translations/en.CD00171190.pdf#%5B%7B%22num%22%3A233%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C67%2C755%2Cnull%5D">STM32F1 Reference Manual</a> to get to know more). The maximum current output from a GPIO is 25 mA.
+  * GND (marked as G)</p>
+<p>Ground. Should be connected to the ground of your circuits.
+  * 3.3V</p>
+<p>3.3V Power supply from the voltage regulator (<a href="https://www.richtek.com/assets/product_file/RT9193/DS9193-16.pdf">RT9193-33</a>). Can be used to provide +3.3V power.
+  * 5V</p>
+<p>Even though it is called 5V, it is actually a power input pin and does not guarantee to be 5V. You may connect it with external power supply to power the board, and the recommanded power supply is 3.3V - 5.5V.
+  It is directly connected to the 5V pin of USB, so remember <strong>NEVER</strong> connect USB and other power supply at the same time, or draw to much current from this pin. Otherwise, it may <strong>FRY</strong> your PC.
+  * NRST (marked as R)</p>
+<p>It is connected to the reset button. Alternatively, connecting this pin to the ground can reset the microcontroller too. (The name start with N means it is activated when connecting to the ground)
+  * DIO, DCLK</p>
+<p>It is used to connect to a hardware programmer such as ST-Link and J-link.
+  * VBAT (marked as VB)</p>
+<p>Power supply for RTC, external clock 32 kHz oscillator and backup registers. Doesn't really matter.
+* LED
+  * Power LED</p>
+<p>It indicates that your Blue Pill is receiving power. It is useful for debugging.
+  * PC13 LED</p>
+<p>It is connected to PC13 and 3V3 (sure with a current-limiting resistor), and it will light up when a LOW signal is assigned to pin PC13. Besides being a handy target for your first blink sketch, this LED is very useful for debugging.
+* STM32F103CT6</p>
+<p>The heart of your board. The processor, flash memory, SRAM and EEPROM written in the specification above are all integrated in this small chip.
+* micro USB port</p>
+<p>Used for powering your board, uploading your sketches to your board, and for communicating with your board via serial communication.
+* Reset button</p>
+<p>Resets the microcontroller.</p>
+</li>
+</ul>
+<p>Now, you have already had a basic understanding of the hardware. Yet, without the software, it is just a piece of rubbish. Let get into the software of Arduino IDE.</p>
+<h2 id="arduino-ide">Arduino IDE</h2>
+<p>The Arduino Integrated Development Environment(IDE), or Arduino Software, contains a text editor for writing code, a message area, a text console, a toolbar with buttons for common functions and a series of menus. It connects to the development boards to upload programs and communicate with them. Arduino provides both online IDE (Arduino Web Editor) and desktop IDE for installation. More details of Arduino IDE can be seen at <a href="https://www.arduino.cc/en/Guide/HomePage">Guide - Arduino</a>. Web Editor provides less functionality which is not suitable for our works. Let’s have a look at it.</p>
+<h3 id="installation">Installation</h3>
+<h4 id="arduino-ide_1">Arduino IDE</h4>
+<p>Download the Arduino IDE from <a href="https://www.arduino.cc/en/Main/Software">Arduino official website</a>.
+* Please <strong>DON'T</strong> use the Arduino Web Editor. It is impossible to install third-party hardwares and libraries, which we will be doing in the next step.
+* If you are a Windows user, please <strong>DON'T</strong> install from Microsoft store. Use Windows Installer instead.
+* If you are a Ubuntu user, please <strong>DON'T</strong> install from <a href="https://packages.ubuntu.com/bionic/arduino">official Ubuntu package</a>. It is version 1.0.5, released at 2013-05-15.</p>
+<h4 id="stm32-arduino-core">STM32 Arduino Core</h4>
+<ol>
+<li>Open Arduino IDE. Press File -&gt; Preferences. You should see you <code>Sketchbook location</code>, which should be <code>&lt;something&gt;\Arduino</code>. Go to the sketchbook location and make a new folder called <code>hardware</code> in the <code>Arduino</code> folder.</li>
+<li>Download <a href="https://github.com/rogerclarkmelbourne/Arduino_STM32">Arduino STM32</a> from Roger Clark.</li>
+<li>Extract the ZIP file and put it under <code>hardware</code> you just made.</li>
+<li>
+<ul>
+<li>For Windows user, go to <code>Arduino_STM32\drivers\win</code> and run <code>install_drivers.bat</code>.</li>
+<li>For Linux user, go to <code>Arduino_STM32/tools/linux64</code> and run <code>install.sh</code>. Install 32-bit shared libraries for AMD64 too (<code>sudo apt install libc6-i386</code> for Ubuntu).</li>
+</ul>
+</li>
+<li>Restart Arduino IDE.</li>
+<li>Press <code>Tools</code> -&gt; <code>Board: &lt;something&gt;</code>. You should see <code>STM32 Boards (STM32duino.com)</code> in the menu.</li>
+<li>Press <code>Tools</code> -&gt; <code>Board: &lt;something&gt;</code> -&gt; <code>Boards Manager</code>. Install <code>Arduino SAM Boards</code>. All we want is the compiler <code>arm-none-eabi-g++</code>.</li>
+<li>
+<p>Press <img alt="Verify" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Arduino_Verify.png" /> to see if it can compile.</p>
+</li>
+<li>
+<p>Please <strong>DON'T</strong> install <a href="https://github.com/stm32duino/wiki/wiki">Arduino Core STM32</a> from ST official, i.e. don't use the method with 'Additional Boards Managers URLs'. It does not support uploading the codes with USB bootloader.</p>
+</li>
+</ol>
+<h3 id="interface">Interface</h3>
+<p><img alt="Arduino IDE" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Arduino_IDE.png" /></p>
+<p>Meaning of buttons in IDE interface:
+* <img alt="Verify" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Arduino_Verify.png" />
+Verify 
+  * Checks your code for errors. Will not upload your code to the board.
+* <img alt="Upload" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Arduino_Upload.png" />
+Upload 
+  * Compiles your code and uploads it to the board. See uploading below for details.
+* <img alt="New" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Arduino_New.png" />
+New 
+  * Creates a new sketch.
+* <img alt="Open" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Arduino_Open.png" />
+Open 
+  * Presents a menu of all the sketches in your sketchbook. Clicking one will open it within the current window overwriting its content.
+* <img alt="Save" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Arduino_Save.png" />
+Save 
+  * Saves your sketch.</p>
+<p>Inside the file “PlaceForCode”, it is the place where you put your code in. On the 1st line of the code, you can see <code>void setup()</code>. It is a function for the STM32 to run once at begin. Meaning of <code>void</code> and <code>function</code> will be discussed later. The braces symbol <code>{}</code> on line 1 and 4 define the scope of the setup() function.</p>
+<p>The function under setup() is loop(). It is a function that will run repeatedly after the setup() function has run once at begin. Thus, the program flow is as below.</p>
+<p><img alt="Program Flow" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Arduino_Program_Flow.jpg" /></p>
+<p>Now, you should know that Blue Pill will first execute the codes in setup() for one time, and then repeatedly execute the code in loop(). Yet, what code should be put in these functions? Here comes the answer.</p>
+<h3 id="section-check-box">Section Check Box:</h3>
+<ul>
+<li>What is Arduino IDE and its usage</li>
+<li>Meaning of buttons in IDE interfaces </li>
+<li><code>void setup() { … }</code></li>
+<li><code>void loop() { … }</code></li>
+</ul>
+<h2 id="basic-arduino-code">Basic Arduino Code</h2>
+<p>The program in Arduino IDE is very similar to C++ codes, which will be introduced in the next tutorial. Let’s write a simple program that can control the LED to blink now.</p>
+<h3 id="first-program-blink">First program: Blink</h3>
+<p>Click <code>File</code> → <code>Examples</code> → <code>01.Basics</code> → <code>Blink</code>. Change <code>LED_BUILTIN</code> into <code>PC13</code>. It should look like:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// initialize digital pin LED_BUILTIN as an output.</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">PC13</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// the loop function runs over and over again forever</span>
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">PC13</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>          <span class="c1">// turn the LED on (HIGH is the voltage level)</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>                       <span class="c1">// wait for a second</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">PC13</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>           <span class="c1">// turn the LED off by making the voltage LOW</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>                       <span class="c1">// wait for a second</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>As said in the previous section, the program starts from the setup() function in line 1. <code>{</code> and <code>}</code> on line 1 and 3 defines the scope of setup() function.</li>
+<li>Inside this setup() function, on line 2, we have <code>pinMode(PC13, OUTPUT);</code> written there. This line is an instruction that tells the board to do something. <ul>
+<li>This instruction is called a statement. Usually a statement fit in exactly one line. Each statement MUST end with a semicolon to denote that the statement has finished.
+*. <code>pinMode(PC13, OUTPUT)</code></li>
+<li>It configures a pin as either an input or an output. </li>
+<li>Input means you use the pin to detect the voltage on the external circuit connected to that pin (will be discussed later), while output means you use the pin to output a voltage to control something. </li>
+<li><code>PC13</code> and <code>OUTPUT</code> are the two parameters that are required by pinMode(). <code>PC13</code> means you are referring to pin PC13. Thus, you can change it to another pin, so that the pin mode of another pin can be defined. <code>OUTPUT</code> means you want the pin you have stated in the 1st statement to be in output mode. You can change it to <code>INPUT</code> so the pin is defined to be in INPUT mode. </li>
+<li>Noted that the <code>M</code> in pinMode must be in capital letter. The word OUTPUT and INPUT must be in capital letter too. </li>
+</ul>
+</li>
+<li>After the setup is finished, the program will then go into the loop() function. Line 6-9 are the 4 statements inside loop().</li>
+<li><code>digitalWrite(PC13, HIGH)</code><ul>
+<li>It means supplying 3.3 volts (HIGH logic signal) to pin PC13 from 0 volt (LOW logic signal) before this statement is executed. </li>
+<li><code>digital</code> in digitalWrite means you can only write either HIGH or LOW value to the pin, corresponding to <code>1</code> or <code>0</code> for computer.</li>
+<li><code>Write</code> in digitalWrite means you are writing a value a pin, rather than reading a value. The opposite of this statement is digitalRead(pin) which will be discussed later.</li>
+<li>Just like in <code>pinMode(PC13, OUTPUT);</code>, <code>PC13</code> and <code>HIGH</code> in <code>digitalWrite(PC13, HIGH)</code> are the two parameters for digitalWrites. </li>
+<li>The statement <code>pinMode(PC13, OUTPUT);</code> must be executed before <code>digitalWrite(PC13, HIGH);</code> , otherwise you may encounter unexpected situations. </li>
+</ul>
+</li>
+<li><code>delay(1000);</code><ul>
+<li>It pauses the program for the amount of time (in milliseconds) specified as parameter.</li>
+<li>1000 means 1000 milliseconds, which is equal to 1 second.</li>
+</ul>
+</li>
+<li><code>digitalWrite(PC13, LOW)</code><ul>
+<li>Similar <code>to digitalWrite(PC13, HIGH);</code>, it controls the voltage output of pin PC13. This time, it assigns a <code>LOW</code>value to pin <code>PC13</code>, which means supplying 0 volt to the pin.</li>
+</ul>
+</li>
+<li>Comment - useful but also useless<ul>
+<li>You may notice that there are sentences after the statements. They are comments.</li>
+<li>Comments are lines in the program that are used to inform yourself or others about the way the program works. They are ignored by the STM32. Thus, comments are useful for yourself to view the code, but useless for the board to execute the code.</li>
+<li>Comments only purpose are to help you understand (or remember) how your program works or to inform others how your program works. There are two different ways of marking a line as a comment.</li>
+<li>Using double slash <code>//</code></li>
+<li>The comment starts after the <code>//</code>. It is a single line comment. Anything after the slashes is a comment to the end of the line.</li>
+<li>Using <code>/*</code> and <code>*/</code></li>
+<li>The comment starts after <code>/*</code>, all the way through lines and sentences to <code>*/</code>. Unlike the double slash, it is multiline comment, using to comment out whole blocks of code.</li>
+</ul>
+</li>
+</ul>
+<h3 id="section-check-box_1">Section Check Box:</h3>
+<ul>
+<li><code>pinMode(pin , mode)</code></li>
+<li>semi-colon <code>;</code></li>
+<li><code>digitalWrite(pin , value)</code></li>
+<li><code>delay(milliseconds)</code></li>
+<li>Comment <code>//</code> or <code>/* … */</code></li>
+</ul>
+<h3 id="the-more-you-know">The more you know</h3>
+<p><code>PC13</code> (and all other pins) are defined in <code>Arduino_STM32/STM32F1/variants/generic_stm32f103c/board/board.h</code>, which facilitate programmer to write codes.</p>
+<p><code>PC13</code> is defined as the integer <code>32</code>. The code still works if you replace <code>PC13</code> with <code>32</code>, but this is discouraged as it makes the code less readable.</p>
+<h2 id="upload-the-code-to-board">Upload the Code to board</h2>
+<p>You now have your code ready. It is time to put your code into the board to get the actual result. First of all, you should have your USB wire and the Blue Pill prepared.</p>
+<ol>
+<li>Plug in the micro USB wire to Blue Pill and the other side to the computer. The red power LED on the board turned on shows that the it is working.</li>
+<li>Return to the Arduino IDE. Before we upload the code to the board, we need to check that the IDE knows what development board we are using and which port is it connected to. <ol>
+<li>Press <code>Tools</code> → <code>Port</code>. If there are more than one choices of port, just randomly select one. If it is not the port you have you board connected to, error will be shown when you upload your code to the board. Just try and find out the one which gives no error and that is the desired port. </li>
+<li>Press <code>Tools</code> → <code>Board: &lt;something&gt;</code>. Select <code>Generic STM32F103C series</code> under <code>STM32 Boards (STM32duino.com)</code>.</li>
+<li>Press <code>Tools</code> → <code>Variant: &lt;something&gt;</code>. Select <code>STM32F103C8 (20k RAM, 64k Flash)</code>.</li>
+<li>Press <code>Tools</code> → <code>Upload method: &lt;something&gt;</code>. Select <code>STM32duino bootloader</code>.</li>
+</ol>
+</li>
+<li>After the preparation steps done, we can now upload our code to the board. Click the upload button <img alt="Upload" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Arduino_Upload.png" /> and wait for it to compile…</li>
+</ol>
+<p><img alt="Done Uploading" src="https://github.com/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Arduino_Done_Uploading.png" /></p>
+<p>When you see the words “Done uploading”, it means that your code has successfully uploaded to the board. You should now see another LED on the board blinking in a one second interval. Congratulation! You have learnt how to control your Blue Pill now.</p>
+<h3 id="section-check-box_2">Section Check Box:</h3>
+<ul>
+<li>Select the correct board from <code>Tools</code> → <code>Board</code>, <code>Variant</code> and <code>Upload method</code></li>
+<li>Select the correct port from <code>Tools</code> → <code>Port</code></li>
+</ul>
+<h3 id="the-more-you-know_1">The more you know</h3>
+<p>Blue Pills just bought doesn't come with USB bootloader. USB port won't show up without USB bootloader. Standard method to flash programs is using a hardware programmer e.g. ST-Link, J-Link, or using a USB-TTL adapter along the built-in Serial bootloader on STM32. <a href="#appendix-how-to-flash-usb-bootloader">Appendix below</a> will introduce the method to flash USB bootloader.</p>
+<h2 id="error-and-debugging">Error and Debugging</h2>
+<p>Sometimes, a program will not compile and upload to the board successfully. Just like the one below. (To try it out, just randomly delete a semi-colon)</p>
+<p><img alt="Syntax Error" src="https://github.com/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Arduino_Syntax_Error.png" /></p>
+<p>It shows that there is something wrong in the program. Go back to the highlighted line and find out what is wrong there. It is usually careless mistakes such as forgetting to add a semi-colon or capitalisation issue. If you don’t know what’s wrong with the code, you can ask us or copy the error message and search it on Google. </p>
+<p><img alt="Problem uploading to board" src="https://github.com/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_Arduino_Upload_Fail.png" /></p>
+<p>If this error message – <code>Problem uploading to board</code> happens, there should be no error in your code. Problem arise from the data transfer between the board and computer. Simply unplug the board from the USB and plug it in again, and then reupload the code to the board can usually solve the problem. If it doesn't solve the problems, check the <a href="#appendix-faq">FAQ below</a>.  </p>
+<h3 id="try-it-yourself-01">Try it yourself 01</h3>
+<p><strong>S.O.S. Signal</strong></p>
+<p>Write an Arduino code to light up LED PC13 on the board, sending out the S.O.S. signal. As you should know, in Morse code, <code>S</code> can be represented by 3 short flashes, while <code>O</code> is represented by 3 long flashes.</p>
+<p>Note that a <code>LOW</code> signal actually turn the PC13 LED on.</p>
+<h2 id="pinmodepin-input-digitalreadpin">pinMode(pin, INPUT) &amp; DigitalRead(pin)</h2>
+<p>As mentioned before, apart from <code>digitalWrite(pin, value)</code> which controls the voltage output of the pin, we have <code>digitalRead(pin)</code> which reads the value from a specified digital pin. It will return either HIGH or LOW value, corresponding to 1 and 0.</p>
+<p>The syntax <code>digitalRead(pin)</code> only take 1 parameter, which is the digital pin you want to read. </p>
+<p>Before you execute <code>digitalRead(pin)</code>, you need to set the pin to INPUT mode first.</p>
+<p>Here is a code using both <code>digitalRead</code> and <code>digitalWrite</code>. It controls the LED on and off by pressing a button.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// initialize digital pin LED_BUILTIN as an output.</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">PC13</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">PB9</span><span class="p">,</span> <span class="n">INPUT_PULLDOWN</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">PC13</span><span class="p">,</span> <span class="n">digitalRead</span><span class="p">(</span><span class="n">PB9</span><span class="p">));</span>
+  <span class="c1">//delay(10);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li><code>pinMode(PB9, INPUT_PULLDOWN)</code><ul>
+<li>As pin PC13 is used to output voltage to the LED, we will use another pin to read the input value, let’s say, pin PB9.</li>
+<li>Thus, we type <code>pinMode(PB9, INPUT_PULLDOWN)</code> to tell the board that we want to set the mode of pin PB9 into reading inputs.</li>
+</ul>
+</li>
+<li><code>digitalWrite(PC13, digitalRead(PB9))</code><ul>
+<li>You should remember that <code>digitalRead(pin, value)</code> takes 2 parameters. For value, you set it as HIGH or LOW. This value can also be provided by <code>digitalRead(pin)</code>, which give you exactly HIGH or LOW value.</li>
+<li>Thus, you can type <code>digitalRead(PB9)</code> in the 2nd parameter directly. The board will get the value of 2nd parameter for digitalWrite automatically from digitalRead.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Schematic" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_TIY02_schem.png" /></p>
+<p>We will setup a circuit like this to let pin PB9 to read the value. The circuit starts from the 3.3V pin which constantly providing 3.3V, to the GND pin. Apart from the button, A resistor is added into the circuit. Pin PB9 is connected between the button and the resistor, so it is at 3.3V a.k.a. HIGH signal when you press the button.</p>
+<p>To implement this, you need a breadboard, a button, a resistor and several male-to-male Dupont wires prepared. Connect the components as bellows.</p>
+<p><img alt="Connection inside a breadboard" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_breadboard.jpg" /></p>
+<p>This is a breadboard, which has holes that let you easily insert electronic components to prototype an electronic circuit, and it has inter-connection between holes as above.</p>
+<p><img alt="Connection with a breadboard" src="/m2robocon/m2_wiki/blob/master/images/(Arduino_Tutorials)_TIY02_bb.png" /></p>
+<p>The circuit should be similar to the one above. Green dots on the above figure across a row in the graph above mean they are electrically connected to each other.</p>
+<p>You can now upload your new code to the board. If it works correctly, the pin PC13 LED should turn off when you press the button and turn on when you release.</p>
+<h3 id="section-check-box_3">Section Check Box:</h3>
+<ul>
+<li><code>pinMode(pin, INPUT);</code></li>
+<li><code>digitalRead(pin);</code></li>
+</ul>
+<h3 id="try-it-yourself-02">Try it yourself 02</h3>
+<p><strong>Send a signal by button</strong>
+1. Write an Arduino code which will light up LED 13 for 0.5 seconds when it button is pressed. The light turns off for 0.5 seconds afterwards, and then turn on again if the button is stilled pressed.
+2. You should notice that a resistor is needed in the circuit. It is called a <a href="https://en.wikipedia.org/wiki/Pull-up_resistor">pull-down resistor</a>. Disconnect it and see if anything is changed.
+  Now let's change <code>pinMode(PB9, INPUT_PULLDOWN)</code> into:
+    * <code>pinMode(PB9, INPUT)</code>
+    * <code>pinMode(PB9, INPUT_PULLUP)</code></p>
+<pre><code>Does it still work without the pull-down resistor?
+
+You may read [Arduino_STM32/io.h at master · rogerclarkmelbourne/Arduino_STM32](https://github.com/rogerclarkmelbourne/Arduino_STM32/blob/master/STM32F1/cores/maple/io.h) and [Input configuration on STM32F1 Reference Manual](https://www.st.com/content/ccc/resource/technical/document/reference_manual/59/b9/ba/7f/11/af/43/d5/CD00171190.pdf/files/CD00171190.pdf/jcr:content/translations/en.CD00171190.pdf#%5B%7B%22num%22%3A236%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C67%2C754%2Cnull%5D) to get to know more.
+</code></pre>
+<h2 id="serial-write">Serial Write</h2>
+<p>We can also display some messages from the board to the computer through serial communication. Type the code below.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// It takes some time before Blue Pill can reconnect to PC</span>
+  <span class="c1">// Delay is needed when there is serial communication</span>
+  <span class="c1">// Genuine Arduino does not require a delay here</span>
+  <span class="c1">// add more if 1500 is not enough</span>
+  <span class="c1">// Alternatively, while(!Serial); can be used after Serial.begin(9600); , which will block the program from execution until Serial Monitor is opened</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1500</span><span class="p">);</span>
+
+  <span class="c1">// Initiate Serial communication</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// So that it wouldn&#39;t print crazily</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li><code>Serial.begin(9600)</code><ul>
+<li>For us to use the functions of the Serial library, we have to initiate serial communication – to do this we use the <code>Serial.begin()</code> function. <code>Serial.begin()</code> needs to go in the <code>setup()</code>.</li>
+<li>Now for reasons beyond the scope of this discussion, it is convenient to use the number <code>9600</code> in the <code>Serial.begin()</code> function. The value <code>9600</code> specifies the <a href="https://en.wikipedia.org/wiki/Baud">baud rate</a>. The baud rate is the rate at which information will pass between Blue pill and the computer.</li>
+</ul>
+</li>
+<li><code>Serial.println("Hello, World!")</code><ul>
+<li>This statement will print the words you type inside <code>"…"</code> to the computer.</li>
+</ul>
+</li>
+<li>Upload your code to the Blue Pill. You cannot see the words printed on the computer yet. You will need to press Ctrl+Shift+M to open the Serial Monitor. The words are printed there.</li>
+</ul>
+<h3 id="section-check-box_4">Section Check Box:</h3>
+<ul>
+<li><code>Serial.begin(9600);</code></li>
+<li><code>Serial.println();</code></li>
+</ul>
+<h3 id="try-it-yourself-03">Try it yourself 03</h3>
+<p><strong>Printing words</strong></p>
+<ul>
+<li>You should notice that the program above will print the words repeatedly. Write a code that will only print once only and at least two different sentences.</li>
+<li>Apart from <code>Serial.println()</code>, there is also <code>Serial.print()</code>. Try to find out the difference between them.</li>
+</ul>
+<h2 id="serial-read">Serial read</h2>
+<p>In order to send information to the Blue pill, we can use Serial read.
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1500</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Block the program from execution until there is serial input</span>
+  <span class="c1">// Can be omitted if getting serial input is not necessary</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="c1">// Read until the serial buffer is empty</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">reveived_byte</span> <span class="o">=</span> <span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">reveived_byte</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>Press Ctrl+Shift+M to open the Serial Monitor. Type some words and then press <code>Send</code>.</p>
+<ul>
+<li><code>Serial.available()</code> returns the number of bytes in the serial buffer that send from PC to blue pill. Let's say if you send <code>Hello</code> in the Serial Monitor, the return value will immediately change from 0 to 6, as you have just typed 6 characters. (<a href="https://en.wikipedia.org/wiki/Null_character">Why 6 characters?</a>)</li>
+<li><code>Serial.read()</code> returns the first character from the buffer.</li>
+<li><code>Serial.println(reveived_byte)</code> prints the character that it just gets.</li>
+</ul>
+<h3 id="section-check-box_5">Section Check Box:</h3>
+<ul>
+<li><code>Serial.available()</code></li>
+<li><code>Serial.read()</code></li>
+</ul>
+<h3 id="try-it-yourself-04">Try it yourself 04</h3>
+<p><strong>More than words</strong></p>
+<p>In order to parse a integer from serial input, you may check the <a href="https://en.wikipedia.org/wiki/ASCII#Character_set">ASCII table</a> and manipulate the input <code>char</code>. Alternatively, built-in function <a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/parseint/">Serial.parseInt()</a> can be used. Change the lines from
+  <div class="highlight"><pre><span></span><code>char reveived_byte = Serial.read();
+Serial.println(reveived_byte);
+</code></pre></div></p>
+<p>into</p>
+<div class="highlight"><pre><span></span><code>int reveived_int = Serial.parseInt();
+Serial.println(reveived_int);
+</code></pre></div>
+
+<p>How does it behave? What if your input is not an integer?</p>
+<ul>
+<li>What if the input I want is a</li>
+<li><code>float</code>?</li>
+<li><code>String</code>?</li>
+</ul>
+<p>Check <a href="https://www.arduino.cc/reference/en/language/functions/communication/serial/">Serial - Arduino Reference</a> to find the see which function can get the job done.</p>
+<h2 id="appendix-faq">Appendix: FAQ</h2>
+<ul>
+<li><strong>Q:</strong> <code>STM32 Boards (STM32duino.com)</code> can not be seen under <code>Tools</code> → <code>Board: &lt;something&gt;</code>.</li>
+<li><strong>A:</strong> Make sure you folder is structured like this: <code>(Sketchbook location)\hardware\Arduino_STM32_master\(some folders e.g. drivers\ and tools\)</code></li>
+<li><strong>Q:</strong> <code>exec: '&lt;something&gt;\arm-none-eabi-g++': file does not exist</code></li>
+<li><strong>A:</strong> Press <code>Tools</code> -&gt; <code>Board: &lt;something&gt;</code> -&gt; <code>Boards Manager</code>. Install <code>Arduino SAM Boards</code>.</li>
+<li><strong>Q:</strong> <code>&lt;some_path&gt;/maple_upload: line 29: &lt;some_path&gt;/upload-reset: No such file or directory</code></li>
+<li>
+<p><strong>A:</strong> This is because <code>upload-reset</code> is a 32-bit executable. You may verify this through <code>file  some_path&gt;/upload-reset</code>, which shows that it is a <code>ELF 32-bit LSB executable</code>.</p>
+<p>Install 32-bit shared libraries for AMD64: <code>sudo apt install libc6-i386</code>.</p>
+</li>
+<li>
+<p><strong>Q:</strong> built-in LED keep flashing and unable to upload code</p>
+</li>
+<li><strong>A:</strong> Press reset button and upload new code. Repeat a couple of times if it doesn't work. Notice that port name maybe changed after reset. If it still doesn't work, <a href="#appendix-how-to-flash-usb-otloader">flash the USB bootloader</a> again.</li>
+<li><strong>Q:</strong> <code>WARN src/stlink-common.c: unknown chip id! 0xa05f0000</code></li>
+<li><strong>A:</strong> USB bootloader already uploaded. In order to overwrite the USB bootloader, press reset and immediately flash the new firmware with ST-Link.</li>
+<li><strong>Q:</strong> <code>Access is denied</code> on Windows.</li>
+<li>
+<p><strong>A:</strong> Don't install Arduino IDE from MS App Store. Install from <a href="https://www.arduino.cc/en/main/software">Arduino official website</a> instead.</p>
+<p><em>Reference: <a href="https://www.stm32duino.com/viewtopic.php?t=3995#p48244">windows 10 upload "Access is denied" error on bluepill - Arduino for STM32</a></em>
+* <strong>Q:</strong> <code>fatal error: Arduino.h: No such file or directory</code>
+  * <strong>A:</strong> Remove the folder <code>C:\Users\(your_user_name)\AppData\Local\Arduino15\</code>, then install <code>Arduino SAM Boards</code> from <code>Boards Manager</code> once again. If it still doesn't work, then try not to put you <code>Sketchbook location</code> under <code>\OneDrive</code>.
+* <strong>Q:</strong> Blue Pill can not be found after being plugged, or <code>Access is denied</code>
+  * <strong>A:</strong> Use another USB cable.
+* <strong>Q:</strong> Still not found after replacing a USB cable.
+  * <strong>A:</strong> There are other methods to upload program including using a USB-to-Serial adapter and using a ST-LINK, which can be found at M2. Check <a href="https://wiki.stm32duino.com/index.php?title=Uploading_a_sketch">Uploading a sketch - STM32duino wiki</a> to read how it's done. Be aware that is the USB bootloader is erased after using either one of these method, so they can no longer be programmed via USB until USB bootloader is flashed to the board once again.
+* <strong>Q:</strong> I found a typo in the article.
+  * <strong>A:</strong> Please tell us.</p>
+</li>
+</ul>
+<h2 id="appendix-how-to-flash-usb-bootloader">Appendix: how to flash USB bootloader</h2>
+<ol>
+<li>Download bootloader <a href="https://github.com/rogerclarkmelbourne/STM32duino-bootloader/blob/master/bootloader_only_binaries/generic_boot20_pc13.bin">generic_boot20_pc13.bin</a>. The version pc13 is used as the LED on blue pill is on PIN PC13.</li>
+<li>Connect the ST-Link with the Blue Pill. <code>SWDIO</code>, <code>SWCLK</code>, <code>3.3V</code> and <code>GND</code> are the only pins required on ST-Link. Remember, <strong>DON'T</strong> provide power to the Blue pill from both ST-Link and USB.</li>
+<li>
+<p>Flash the bootloader.</p>
+<ul>
+<li>(Linux)</li>
+</ul>
+<p>We may use <code>st-flash</code> that come along with Arduino STM32.
+  <div class="highlight"><pre><span></span><code>    <span class="nb">cd</span> /home/m2_is_neat/Arduino/hardware/Arduino_STM32-master/tools/linux64/stlink/ <span class="o">(</span>Depends on where you put sketchbook folder<span class="o">)</span>
+    ./st-flash write /home/m2_is_neat/I_put_my_file_here/generic_boot20_pc13.bin 0x8000000
+</code></pre></div></p>
+</li>
+</ol>
+<p><em>Reference: <a href="https://github.com/rogerclarkmelbourne/Arduino_STM32/wiki/Flashing-Bootloader-for-BluePill-Boards">Flashing Bootloader for BluePill Boards · rogerclarkmelbourne/Arduino_STM32 Wiki</a></em></p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://wiki.stm32duino.com/index.php?title=Blue_Pill">Blue Pill - STM32duino wiki</a></li>
+<li><a href="https://github.com/rogerclarkmelbourne/STM32duino-bootloader">rogerclarkmelbourne/STM32duino-bootloader: Bootloader for STM32F103 boards, for use with the Arduino_STM32 repo and the Arduino IDE</a></li>
+<li><a href="https://github.com/rogerclarkmelbourne/Arduino_STM32/wiki/Bootloader">Bootloader  rogerclarkmelbourne/Arduino_STM32 Wiki</a></li>
+</ul>
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://www.st.com/resource/en/datasheet/stm32f103c8.pdf">STM32F103C8 Datasheet</a>, which mentioned the physical properties of STM32F103, such as hardware specifications, ratings (e.g. supply voltage, output current), pinout, suggested circuit designs and many others.</li>
+<li><a href="https://www.st.com/content/ccc/resource/technical/document/reference_manual/59/b9/ba/7f/11/af/43/d5/CD00171190.pdf/files/CD00171190.pdf/jcr:content/translations/en.CD00171190.pdf">STM32F1 Reference Manual</a>, which mentioned how a STM32F1 behaves and how to use STM32F1.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="Arduino-Tutorials-(Index)">Arduino Tutorials (Index)</a></li>
+<li><a href="Arduino-Tutorials-(Learning-basic-programming-with-Arduino)">Learning basic programming with Arduino</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../Arduino-Tutorials-%28Communication%29/" title="Arduino Tutorials (Communication)" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Arduino Tutorials (Communication)
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../Arduino-Tutorials-%28Index%29/" title="Arduino Tutorials (Index)" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Arduino Tutorials (Index)
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.d1f5a259.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d5fec882.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.fae956e7.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
